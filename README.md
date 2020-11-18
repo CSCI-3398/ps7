@@ -1,13 +1,13 @@
 # Problem Set 7: TTS
-For this problem set, you will **choose _*one*_ of the following two activities**.
+For this problem set, you will **choose _*one*_ of the following two options**.
 
 1. Build a parametric TTS system using your own voice. This involves less programming but lots of unix and following directions very carefully. It will be hard for me to provide technical support.
 
 2. Write a program to turn the prosody of a statement into the prosody of a question. This involves more programming and not much unix or following directions.  
 
-The deliverables for the two activities are described below. You will submit add, commit, and push the deliverables by the deadline, Tuesday, November 24, at 11:59pm.
+The deliverables for the two options are described below. You will submit add, commit, and push the deliverables by the deadline, Tuesday, November 24, at 11:59pm.
 
-## Activity 1: Building a TTS system with your own voice
+## Option 1: Building a TTS system with your own voice
 This will be complicated, but you won't need to do any actual programming. If you are good with unix, you will be able to finish this in less than an hour. If you are going to require a lot of technical support, do Activity #2 instead.
 
 ### Step 1: Install Festival
@@ -123,7 +123,7 @@ festival> (SayText "Behold the sound of my voice")
 * Add, commit, and push a pdf describing your opinions about these sentences. What are the good qualities of the good sentences? What are the bad qualities of the bad sentences?
 
 
-## Activity 2: Modifying prosody with Praat and Python
+## Option 2: Modifying prosody with Praat and Python
 In the `pitch` directory of this repo, there is a `.wav` file, a Python script, and two Praat scripts.
 
 ### Step 1
@@ -147,7 +147,7 @@ python3 doublePitch.py inputPitchTier.PitchTier
 ### Step 4 
 Now you can resynthesize the original `.wav` file with a new pitch track that is twice as high as the original pitch track using the `replacePitchTier.Praat` script. Open Praat, open the script in Praat, and then run.
 
-### Step 5
+### Step 5 (optional)
 Have a look at the file `runPraatScript.sh`. This shows you how to run the code in steps 1-4 from a terminal without actually opening Praat! (Adjust the commands for your operating system as indicated in the comments.)
 
 ```
