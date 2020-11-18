@@ -1,7 +1,7 @@
 # Problem Set 7: TTS
 For this problem set, you will **choose _*one*_ of the following two activities**.
 
-1. Build a parametric TTS system using your own voice. This involves less programming but lots of unix and following directions very carefully. If you are a Windows user, I recommend not trying this option since I won't be able to provide technical support.
+1. Build a parametric TTS system using your own voice. This involves less programming but lots of unix and following directions very carefully. It will be hard for me to provide technical support.
 
 2. Write a program to turn the prosody of a statement into the prosody of a question. This involves more programming and not much unix or following directions.  
 
@@ -116,39 +116,58 @@ festival> (voice_bc_us_ep_cg)
 festival> (SayText "Behold the sound of my voice")
 ```
 ### DELIVERABLES
-* Submit `.wav` files for three sentences synthesized with your voice that sound okay. 
+* Add, commit, and push `.wav` files for three sentences synthesized with your voice that sound okay. 
 
-* Submit `.wav` files for three sentences synthesized with your voice that contain really bad mistakes. 
+* Add, commit, and push `.wav` files for three sentences synthesized with your voice that contain really bad mistakes. 
 
-* Submit a pdf describing your opinions about these sentences. What are the good qualities of the good sentences? What are the bad qualities of the bad sentences?
+* Add, commit, and push a pdf describing your opinions about these sentences. What are the good qualities of the good sentences? What are the bad qualities of the bad sentences?
 
 
 ## Activity 2: Modifying prosody with Praat and Python
 In the `pitch` directory of this repo, there is a `.wav` file, a Python script, and two Praat scripts.
 
 ### Step 1
-Open Praat, then open the getPitchTier.Praat script. Change the paths to make them point at your `pitch` directory and the `sentence.wav` file included in the directory, and then run it. (Make sure you're not muting the sound on your computer so you can hear it.)
+Open Praat, then open the `getPitchTier.Praat` Praat script. You should be able to run it without making any modifications. (Make sure you're not muting the sound on your computer so you can hear it!)
 
 ### Step 2
-In the `pitch` drectory, you'll now see a new file called `oldPitchTier.PitchTier`. Open it with a good text editor (not Microsoft Word), and you'll see that it has a few lines of obligatory metadata followed by pitch information in this format, where the two fields are separated by tabs:
+In the `pitch` drectory, you'll now see a new file called `inputPitchTier.PitchTier`. Open it with a good text editor (not Microsoft Word), and you'll see that it has a few lines of obligatory metadata followed by pitch information in this format, where the two fields are separated by tabs:
+
 ```
-timestamp1 pitchvalue1 timestamp2 pitchvalue2
-```
-### Step 3
-Run the script `doublePitch.py` on that file to double the pitch values, and save it out to a new file called `newPitchTier.PitchTier` like this:
-```
-python3 doublePitch.py oldPitchTier.PitchTier > newPitchTier.PitchTier
+timestamp1 pitchvalue1 
+timestamp2 pitchvalue2
 ```
 
-###4. Now you can resynthesize the original wav file with the new pitch track that is twice as high as the original pitch track using the replacePitchTier.Praat script. Open it in Praat, change the paths to point at your files, and then run. (Again, make sure mute is off!)
-5. Have a look at the file runPraatScript.sh, also in this directory. This shows you how to do steps 1-4 without actually opening Praat. (Adjust the commands for your operating system as indicated in the comments.)
-chmod +x runPraatScript.sh ./runPraatScript.sh
-Your task is to write a python script that turns statement intonation PitchTier into a question intonation PitchTier for any sentence contained in a .wav file.
+### Step 3
+Run the Python program `doublePitch.py` on that file to double the pitch values. This program will create a new `PitchTier` called `new-inputPitchTier.PitchTier`. It will take as an argument the `PitchTier` created in Step 2, above. This is how you would do this from a  command line (keeping in mind that you might be able to type `python` instead of `python3` depending on how you have Python installed).
+
+```
+python3 doublePitch.py inputPitchTier.PitchTier
+```
+
+### Step 4 
+Now you can resynthesize the original `.wav` file with a new pitch track that is twice as high as the original pitch track using the `replacePitchTier.Praat` script. Open Praat, open the script in Praat, and then run.
+
+### Step 5
+Have a look at the file `runPraatScript.sh`. This shows you how to run the code in steps 1-4 from a terminal without actually opening Praat! (Adjust the commands for your operating system as indicated in the comments.)
+
+```
+chmod +x runPraatScript.sh 
+./runPraatScript.sh
+```
+
+### Step 6
+Your task is to replace the `doublePitch.py` program with a Python program that turns a "statement intonation" `PitchTier` into a "question intonation" `PitchTier` for any sentence contained in a `.wav` file. It should take the same input as `doublePitch.py` and it should produce a new `PitchTier` file, just as `doublePitch.py` produced. 
+
 Here are some ideas to help you get started.
-Idea 1: Take the last, e.g., 20% of your input PitchTier and make the pitch go up instead of down by replacing the pitch values with some increasing value above the mean overall pitch.
-Idea 2: Record yourself saying a sentence with question intonation. Extract that pitch tier and then add or subtract values from the beginning or end until it’s the same length as the PitchTier you are trying to modify. Then use that as your new PitchTier.
-Idea 3: Do as above, but use piecewise linear interpolation between time points. There are a various linear interpolation functions in numpy, scipy, pandas. An easy one to use is numpy.linspace, which gives you a series of evenly spaced numbers between two numbers.
+
+* Take the last, e.g., 20% of your input `PitchTier` and make the pitch go up instead of down by replacing the pitch values with some increasing value above the mean overall pitch.
+
+* Record yourself saying a sentence with question intonation. Extract that pitch tier and then add or subtract values from the beginning or end until it’s the same length as the `PitchTier` you are trying to modify. Then use that as your new `PitchTier`.
+
+* Do as above, but use piecewise linear interpolation between time points. There are a various linear interpolation functions in numpy, scipy, pandas. An easy one to use is `numpy.linspace`, which gives you a series of evenly spaced numbers between two numbers.
  
-Q11. What strategy did you use, and how did you arrive at that strategy? What would you have done if you had had more time?
-Q12. Submit your script, statement2question.py, in the Dropbox. The script should take a PitchTier file as input and it should output a PitchTier file of the same length but with different pitch values. Points will be taken off for scripts that cannot be run exactly as the one I've provided for double pitch.
+### DELIVERABLES 
+*  Add, commit, and push your Python program called `statement2question.py`. You are also free to update the Praat scripts, but I must be able to run them exactly as I do in `runPraatScript.sh`. I do not want to have to open any files to be able to hear the original audio, run all the scripts, and then hear the new audio.
+
+* Add, commit, and push a pdf describing the strategy you used and what fancier things you could have done if you had more time.
 
