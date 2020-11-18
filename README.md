@@ -53,7 +53,7 @@ festival> (exit)
 1. Make sure you are in the `build` directory. Then type these commands. Make sure there are no errors after the two `ls` statements and that they just list the contents of the `speech_tools` and `festvox` directories, respectively.
 
 ```
-cd ..   # this will back you up from build/festival to buils
+cd ..   # this will back you up from build/festival to build
 pwd     # confirm that you are in the build directory
 export ESTDIR="`pwd`/speech_tools"
 export FESTVOXDIR="`pwd`/festvox"
@@ -124,5 +124,31 @@ festival> (SayText "Behold the sound of my voice")
 
 
 ## Activity 2: Modifying prosody with Praat and Python
+In the `pitch` directory of this repo, there is a `.wav` file, a Python script, and two Praat scripts.
 
+### Step 1
+Open Praat, then open the getPitchTier.Praat script. Change the paths to make them point at your `pitch` directory and the `sentence.wav` file included in the directory, and then run it. (Make sure you're not muting the sound on your computer so you can hear it.)
+
+### Step 2
+In the `pitch` drectory, you'll now see a new file called `oldPitchTier.PitchTier`. Open it with a good text editor (not Microsoft Word), and you'll see that it has a few lines of obligatory metadata followed by pitch information in this format, where the two fields are separated by tabs:
+```
+timestamp1 pitchvalue1 timestamp2 pitchvalue2
+```
+### Step 3
+Run the script `doublePitch.py` on that file to double the pitch values, and save it out to a new file called `newPitchTier.PitchTier` like this:
+```
+python3 doublePitch.py oldPitchTier.PitchTier > newPitchTier.PitchTier
+```
+
+###4. Now you can resynthesize the original wav file with the new pitch track that is twice as high as the original pitch track using the replacePitchTier.Praat script. Open it in Praat, change the paths to point at your files, and then run. (Again, make sure mute is off!)
+5. Have a look at the file runPraatScript.sh, also in this directory. This shows you how to do steps 1-4 without actually opening Praat. (Adjust the commands for your operating system as indicated in the comments.)
+chmod +x runPraatScript.sh ./runPraatScript.sh
+Your task is to write a python script that turns statement intonation PitchTier into a question intonation PitchTier for any sentence contained in a .wav file.
+Here are some ideas to help you get started.
+Idea 1: Take the last, e.g., 20% of your input PitchTier and make the pitch go up instead of down by replacing the pitch values with some increasing value above the mean overall pitch.
+Idea 2: Record yourself saying a sentence with question intonation. Extract that pitch tier and then add or subtract values from the beginning or end until it’s the same length as the PitchTier you are trying to modify. Then use that as your new PitchTier.
+Idea 3: Do as above, but use piecewise linear interpolation between time points. There are a various linear interpolation functions in numpy, scipy, pandas. An easy one to use is numpy.linspace, which gives you a series of evenly spaced numbers between two numbers.
+ 
+Q11. What strategy did you use, and how did you arrive at that strategy? What would you have done if you had had more time?
+Q12. Submit your script, statement2question.py, in the Dropbox. The script should take a PitchTier file as input and it should output a PitchTier file of the same length but with different pitch values. Points will be taken off for scripts that cannot be run exactly as the one I've provided for double pitch.
 
