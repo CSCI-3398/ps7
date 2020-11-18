@@ -111,7 +111,7 @@ cat mcd-base.out
 Next, run Festival using your voice! Don't forget to replace the path below with *your* path to festival and to replace `ep` with *your* initials and to provide the full path to your festival directory (and, of course, don't type festival> when you're running festival). Stay in your voice directory and type:
 
 ```
-/Users/emilypx/Desktop/ps7/ttsvoice/build/festival/bin/festival festvox/cmu_us_ss_cg.scm 
+/Users/emilypx/Desktop/ps7/ttsvoice/build/festival/bin/festival festvox/bc_us_ep_cg.scm 
 festival> (voice_bc_us_ep_cg)
 festival> (SayText "Behold the sound of my voice")
 ```
