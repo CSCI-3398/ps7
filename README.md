@@ -8,7 +8,7 @@ For this problem set, you will **choose _*one*_ of the following two options**.
 The deliverables for the two options are described below. You will submit add, commit, and push the deliverables by the deadline, Tuesday, November 24, at 11:59pm.
 
 ## Option 1: Building a TTS system with your own voice
-This will be complicated, but you won't need to do any actual programming. If you are good with unix, you will be able to finish this in less than an hour. If you are going to require a lot of technical support, do Activity #2 instead.
+This will be complicated, but you won't need to do any actual programming. If you are good with unix and installing new unix tools, you will be able to finish this in less than an hour without actually typing any code yourself. If you immediately need technical support, try the other option instead. Don't let yourself get stuck on errors that you might not be able to resolve.
 
 ### Step 1: Install Festival
 1. Install the `sox` binary for your OS from here:
