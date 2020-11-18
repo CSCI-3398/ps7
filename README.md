@@ -66,7 +66,7 @@ ls $FESTVOXDIR
 ```
 mkdir bc_us_ep
 cd bc_us_ep
-$FESTVOXDIR/src/clustergen/setup_cg bc us sp
+$FESTVOXDIR/src/clustergen/setup_cg bc us ep
 mv ../../txt.done.data etc/
 ```
 
