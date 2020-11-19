@@ -1,6 +1,8 @@
 # Problem Set 7: Prosody modification for TTS
 In this (very easy!) problem set, you will writing a script to turn a statement into a question by modifying the pitch (F0). In the `pitch` directory of this repo, I've given you some scripts to get you started (a Python script, two Praat scripts, and a bash script), as well as a `.wav` to experiment with.
 
+The deliverables, described below, are due Tuesday, November 24, at 11:59pm EST.
+
 *NOTE: The  `ttsvoice` directory contains an optional extra credit assignment. There is a `README` in that directory that will tell anyone who is interested what to do. I will not be able provide technical support for the extra credit assignment.* 
 
 
