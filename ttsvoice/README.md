@@ -1,8 +1,8 @@
 ## Option 1: Building a TTS system with your own voice
- This will be complicated, but you won't need to do any actual programming. If you are good with unix and installing new unix tools, you will be able to finish this in less than an hour without actually typing any code yourself. If you immediately need technical support, try the other option instead. Don't let yourself get stuck on errors that you might not be able to resolve.
+ This will be complicated, but you won't need to do any actual programming. If you are good with unix and installing new unix tools, you will be able to finish this in less than an hour without actually typing any code yourself. If you immediately need technical support, don't bother. I will not be able to provide technical support.
 
  ### Step 1: Install Festival
- 1. Install SoX, either by following the the `sox` binary for your OS from here 
+ 1. Install SoX from here: 
 
  https://sourceforge.net/projects/sox/files/sox/14.3.2/
 
